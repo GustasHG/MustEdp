@@ -1,0 +1,21 @@
+.bg {
+    background-color: #e5e5e5;
+    float: left;
+    width: 100%;
+}
+
+.main {
+    float: left;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+
+.region {
+    color: #212E3E;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    margin-left: 5px;
+    margin-top: 15px;
+}

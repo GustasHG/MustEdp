@@ -1,0 +1,13 @@
+.icon {
+    transition: .5s;
+}
+
+.menuContainer {
+    background-color: white;
+    margin-left: -72.5px;
+    margin-top: 5px;
+    position: absolute;
+    transition: .5s;
+    width: 180px;
+    z-index: 1;
+}
