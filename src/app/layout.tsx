@@ -32,10 +32,15 @@ export default function RootLayout({
           </Link>
           <div className={styles.info}>
             <Menu/>
-          </div>
+          </div>          
           <p className={styles.info}>
             Info
           </p>
+          <Link href="/">
+            <p className={styles.info}>
+              Home
+            </p>
+          </Link>
         </header>
         {children}
       </body>

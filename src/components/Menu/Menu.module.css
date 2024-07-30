@@ -11,3 +11,50 @@
     width: 180px;
     z-index: 1;
 }
+
+.headerContainer {
+    background-color: #28FF52;
+    height: 40px;
+    float: left;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.headerTitle {
+    color: #212E3E;
+    float: left;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.link {
+    color: #212E3E;
+    float: left;
+    font-size: 16px;
+    font-weight: 600;
+    float: left;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 8px;
+    text-decoration: none;
+    width: calc(100% - 40px);
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link:active {
+    text-decoration: none;
+}
+
+.linkIcon {
+    float: left;
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-top: 9px;
+    width: 20px;
+}

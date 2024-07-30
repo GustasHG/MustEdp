@@ -1,0 +1,70 @@
+.container {
+    background-color: white;
+    height: 45px;
+    float: left;
+    width: 230px;
+}
+
+.title {
+    color: #646D78;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.filterContainer {
+    cursor: pointer;
+    float: left;
+    height: 23px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: calc(100% - 20px);
+}
+
+.filterIcon {
+    color: #646D78;
+    float: right;
+    font-size: 20px;
+    margin-right: -5px;
+    margin-top: -5px;
+}
+
+.value {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 2px;
+}
+
+.optionsContainer {
+    background-color: white;
+    margin-left: 10px;
+    margin-top: 45px;
+    position: absolute;
+    transition: .5s;
+    width: 210px;
+}
+
+.optionRow {
+    cursor: pointer;
+    float: left;
+    margin: 0;
+    width: 100%;
+}
+
+.optionRow:hover {
+    background-color: rgba(0, 0, 0, 0.089);
+}
+
+.optionRow:active {
+    background-color: white;
+}
+
+.option {
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
