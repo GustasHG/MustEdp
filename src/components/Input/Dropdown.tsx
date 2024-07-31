@@ -5,7 +5,7 @@ import styles from "./Dropdown.module.css";
 import { uuid } from "uuidv4";
 
 interface DropdownProps {
-    defaultValue?: string;
+    defaultValue?: string | null;
     onChange?: (value: string) => void;
     options: string[];
     style?: React.CSSProperties;

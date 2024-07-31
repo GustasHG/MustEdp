@@ -13,12 +13,12 @@ export default function Home() {
         <p className={styles.mainText}>Simulador desenvolvido pela equipe de <strong>Estudos de Mercado</strong>, com o objetivo de otimizar a seleção de contratos para os pontos de distribuição</p>
         <p className={styles.mainText}><strong>Para iniciar a simulação, selecione uma das regiões abaixo:</strong></p>
         <span className={styles.span}>•</span>
-        <Link className={styles.link} href="/sp?cenario=Otimista&ponto=Todos&posto=Todos">
+        <Link className={styles.link} href="/sp?cenario=Otimista&ponto=Todos&posto=Todos&ano=Todos&penalidade=Todas&contrato=Otimo">
           EDP SP
         </Link>
         <br/>
         <span className={styles.span}>•</span>
-        <Link className={styles.link} href="/es?cenario=Otimista&ponto=Todos&posto=Todos">
+        <Link className={styles.link} href="/es?cenario=Otimista&ponto=Todos&posto=Todos&ano=Todos&penalidade=Todas&contrato=Otimo">
           EDP ES
         </Link>
       </div>

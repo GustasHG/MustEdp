@@ -46,6 +46,7 @@
     position: absolute;
     transition: .5s;
     width: 210px;
+    z-index: 1;
 }
 
 .optionRow {

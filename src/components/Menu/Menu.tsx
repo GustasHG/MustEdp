@@ -55,9 +55,9 @@ export default function Menu() {
                         <SlEnergy className={styles.linkIcon}/>
                         <Link className={styles.link} href="/">Alterar Demanda</Link>
                         <RiMapPin2Line className={styles.linkIcon}/>
-                        <Link className={styles.link} href="/sp?cenario=Otimista&ponto=Todos&posto=Todos">EDP SP</Link>
+                        <Link className={styles.link} href="/sp?cenario=Otimista&ponto=Todos&posto=Todos&ano=Todos&penalidade=Todas&contrato=Otimo">EDP SP</Link>
                         <RiMapPin2Line className={styles.linkIcon}/>
-                        <Link className={styles.link} href="/es?cenario=Otimista&ponto=Todos&posto=Todos">EDP ES</Link>
+                        <Link className={styles.link} href="/es?cenario=Otimista&ponto=Todos&posto=Todos&ano=Todos&penalidade=Todas&contrato=Otimo">EDP ES</Link>
                     </>
                 }
             </div>

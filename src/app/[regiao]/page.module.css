@@ -6,9 +6,9 @@
 
 .main {
     float: left;
-    margin-left: 10%;
-    margin-right: 10%;
-    width: 80%;
+    margin-left: calc((100% - 950px)/2);
+    margin-right: calc((100% - 950px)/2);
+    width: 950px;
 }
 
 .region {
@@ -28,12 +28,4 @@
 
 .blankDiv {
     background-color: white;
-    
-}
-
-.chartContainer {
-    background-color: white;
-    height: 300px;
-    float: left;
-    width: 100%;
 }

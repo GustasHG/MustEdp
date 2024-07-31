@@ -4,7 +4,7 @@ import { Contract } from "./Contract";
 import { Data } from "./Data";
 
 export interface ContractAdapterInterface {
-    get: (cenario: string, region: Region) => Promise<Contract[]>
+    get: (demanda: string, ponto: string, posto: string, ano: string, region: Region) => Promise<Contract[]>
 }
 
 export class ContractAdapter implements ContractAdapterInterface {
@@ -14,7 +14,7 @@ export class ContractAdapter implements ContractAdapterInterface {
         this._adapter = _adapter;
     }
 
-    public async get(cenario: string, region: Region): Promise<Contract[]> {
+    public async get(demanda: string, ponto: string, posto: string, ano: string, region: Region): Promise<Contract[]> {
         return Data;
     }
 }
