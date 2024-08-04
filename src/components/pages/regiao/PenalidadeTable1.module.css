@@ -1,0 +1,30 @@
+.tableContainer {
+    float: left;
+    margin-left: calc((100% - (120px)*7)/2);
+    width: calc(120px*7);
+}
+
+.headerContainer {
+    background-color: #222;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+    width: 100%;
+}
+
+.bodyContainer {
+    float: left;
+    width: 100%;
+}
+
+.rowContainer {
+    float: left;
+    width: 100%;
+}
+
+.cell {
+    float: left;
+    height: 40px;
+    text-align: center;
+    width: 120px;
+}

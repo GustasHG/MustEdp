@@ -1,9 +1,10 @@
+import { getTarifaPath } from "@/components/pages/tarifa/TarifaPath";
 import Menu from "@/components/Menu/Menu";
 import { Dosis } from "next/font/google";
 import styles from "./layout.module.css";
 import type { Metadata } from "next";
-import "./globals.css";
 import Link from "next/link";
+import "./globals.css";
 
 const inter = Dosis({ subsets: ["latin"] });
 
@@ -32,10 +33,12 @@ export default function RootLayout({
           </Link>
           <div className={styles.info}>
             <Menu/>
-          </div>          
-          <p className={styles.info}>
-            Info
-          </p>
+          </div> 
+          <Link href={getTarifaPath("Todas", "Todos", "Todos", "Todos")}>
+            <p className={styles.info}>
+              Tarifa
+            </p>
+          </Link>         
           <Link href="/">
             <p className={styles.info}>
               Home

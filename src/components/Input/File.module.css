@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+
+.dropZone {
+    cursor: pointer;
+    background-color: #00000012;
+    border-radius: 5px;
+    height: 70px;
+    /* overflow: hidden; */
+    /* border: 2px dashed #007bff; */
+    transition: background-color 0.3s, border-color 0.3s;
+    width: 400px;
+}
+
+.iconContainer {
+    float: left;
+    height: 70px;
+    text-align: center;
+    width: 90px;
+}
+
+.icon {
+    font-size: 40px;
+    color: #646D78;
+    margin-top: 15px;
+}
+
+.textContainer {
+    float: left;
+    height: 70px;
+    width: 130px;
+}
+  
+.title {
+    color: #424D5B;
+    font-size: 16px;
+    font-weight: bold;
+    float: left;
+    margin: 0;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.subTitle {
+    color: #646D78;
+    font-size: 16px;
+    float: left;
+    margin: 0;
+    margin-top: -4px;
+    width: 100%;
+}
+
+.buttonContainer {
+    float: left;
+    height: 70px;
+    text-align: center;
+    width: calc(100% - 220px);
+}
+
+.button {
+    background-color: #e5e5e5;
+    border: solid 1px #BECACC;
+    border-radius: 5px;
+    color: #424D5B;
+    cursor: pointer;
+    font-family: 'Dosis';
+    font-size: 15px;
+    font-weight: 500;
+    height: 32px;
+    margin-top: 19px;
+    width: 140px;
+}
+
+.dropZone:hover {
+  background-color: #00000022;
+}
+
+.active {
+  background-color: #646D78;
+  border-color: #646D78;
+}
+
+.fileInput {
+  display: none;
+}
+  

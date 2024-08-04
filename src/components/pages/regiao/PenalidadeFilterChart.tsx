@@ -1,5 +1,5 @@
 "use client"
-import { Pie, PieChart, ResponsiveContainer, Sector } from "recharts";
+import { Legend, Pie, PieChart, ResponsiveContainer, Sector } from "recharts";
 import { useState } from "react";
 
 const renderActiveShape = (props: any) => {
@@ -14,11 +14,11 @@ const renderActiveShape = (props: any) => {
     const ex = mx + (cos >= 0 ? 1 : -1) * 22;
     const ey = my;
     const textAnchor = cos >= 0 ? 'start' : 'end';
-  
+    const displayName = payload.name === "Todas" ? "Custo Total" : payload.name;
     return (
       <g>
         <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-          {payload.name}
+          {displayName}
         </text>
         <Sector
           cx={cx}
@@ -40,10 +40,10 @@ const renderActiveShape = (props: any) => {
         />
         <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
         <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${value} Milhões`}</text>
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
+        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${displayName}`}</text>
+        {/* <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
           {`(${(percent * 100).toFixed(2)}%)`}
-        </text>
+        </text> */}
       </g>
     );
 };
@@ -101,6 +101,7 @@ export default function PenalidadeFilterChart(
                 // onMouseEnter={onPieEnter}
                 onClick={chartClickHandler}
             />
+          <Legend />
         </PieChart>
       </ResponsiveContainer>
     );

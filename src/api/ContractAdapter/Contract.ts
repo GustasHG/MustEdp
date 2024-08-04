@@ -1,4 +1,5 @@
 export interface Contract {
+    Id: number;
     Data: string;
     Ponto: string;
     Posto: string;

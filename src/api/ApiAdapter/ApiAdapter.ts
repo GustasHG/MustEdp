@@ -5,7 +5,7 @@ export interface ApiAdapterInterface {
 export class ApiAdapter implements ApiAdapterInterface {
     _url: string;
     public constructor() {
-        this._url = "http://localhos:5050";
+        this._url = "http://172.20.74.21:4041";
     }
 
     public async fetch<T>(uri: string, init?: RequestInit): Promise<T> {

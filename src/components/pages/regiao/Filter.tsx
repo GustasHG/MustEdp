@@ -1,6 +1,6 @@
 "use client"
+import { useParams, useSearchParams } from "next/navigation";
 import Dropdown from "@/components/Input/Dropdown";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 const posto = [
     "Todos",
@@ -14,36 +14,40 @@ const cenario = [
     "Extremo"
 ];
 
-const ponto = [
-    "Todos",
-    "São José dos Campos"
-];
-
 const periodo = [
     "Todos",
     "2024",
     "2025",
     "2026",
-    "2027"
+    "2027",
 ]
 
-export default function Filter() {
-    const router = useRouter();
+interface FilterProps {
+    dateOptions: string[]
+    pontos: string[]
+}
+
+export default function Filter(
+    {
+        dateOptions,
+        pontos
+    }: FilterProps
+) {
     const params = useSearchParams();
     const { regiao } = useParams();
     const changeCenarioEventHandler = (value: string) => {
-        router.push(`/${regiao}?cenario=${value}&ponto=${params.get("ponto")}&posto=${params.get("posto")}&ano=${params.get("ano")}&penalidade=${params.get("penalidade")}&contrato=${params.get("contrato")}`);
+        window.location.replace(`/${regiao}?cenario=${value}&ponto=${params.get("ponto")}&posto=${params.get("posto")}&ano=${params.get("ano")}&penalidade=${params.get("penalidade")}&contrato=${params.get("contrato")}`);
     }
 
     const changePontoEventHandler = (value: string) => {
-        router.push(`/${regiao}?cenario=${params.get("cenario")}&ponto=${value}&posto=${params.get("posto")}&ano=${params.get("ano")}&penalidade=${params.get("penalidade")}&contrato=${params.get("contrato")}`);
+        window.location.replace(`/${regiao}?cenario=${params.get("cenario")}&ponto=${value}&posto=${params.get("posto")}&ano=${params.get("ano")}&penalidade=${params.get("penalidade")}&contrato=${params.get("contrato")}`);
     }
 
     const changePostoEventHandler = (value: string) => {
-        router.push(`/${regiao}?cenario=${params.get("cenario")}&ponto=${params.get("ponto")}&posto=${value}&ano=${params.get("ano")}&penalidade=${params.get("penalidade")}&contrato=${params.get("contrato")}`);
+        window.location.replace(`/${regiao}?cenario=${params.get("cenario")}&ponto=${params.get("ponto")}&posto=${value}&ano=${params.get("ano")}&penalidade=${params.get("penalidade")}&contrato=${params.get("contrato")}`);
     }
     const changeAnoEventHandler = (value: string) => {
-        router.push(`/${regiao}?cenario=${params.get("cenario")}&ponto=${params.get("ponto")}&posto=${params.get("posto")}&ano=${value}&penalidade=${params.get("penalidade")}&contrato=${params.get("contrato")}`);
+        window.location.replace(`/${regiao}?cenario=${params.get("cenario")}&ponto=${params.get("ponto")}&posto=${params.get("posto")}&ano=${value}&penalidade=${params.get("penalidade")}&contrato=${params.get("contrato")}`);
     }
     
     return (
@@ -58,7 +62,7 @@ export default function Filter() {
                 title="Ponto"
                 defaultValue={params.get("ponto")}
                 onChange={changePontoEventHandler}
-                options={ponto}
+                options={pontos}
                 style={{ marginLeft: "10px" }}
             />
             <Dropdown
