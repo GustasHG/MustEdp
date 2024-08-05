@@ -1,0 +1,12 @@
+.inputSection {
+    width: 100%;
+}
+
+.uploadButton {
+    background-color: #212E3E;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    height: 35px;
+    width: 150px;
+}

@@ -1,0 +1,79 @@
+.bg {
+    background-color: #e5e5e5;
+    float: left;
+    width: 100%;
+}
+
+
+.whiteBg {
+    background: #e5e5e5;
+    float: left;
+    width: 100%;
+}
+.main {
+    float: left;
+    margin-left: calc((100% - 950px)/2);
+    margin-right: calc((100% - 950px)/2);
+    width: 950px;
+}
+
+.downloadIcon {
+    cursor: pointer;
+    font-size: 24px;
+    vertical-align: bottom;
+    margin-left: 8px;
+}
+
+.downloadIcon:hover {
+    color: #28FF52;
+}
+
+.downloadIcon:active {
+    color: #212E3E;
+}
+
+.subtitle {
+    color: #212E3E;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.region {
+    color: #212E3E;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.section {
+    float: left;
+    width: 100%;
+}
+
+.blankDiv {
+    background-color: white;
+}
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+.loading {
+    animation: rotate 2s linear infinite;
+    color: #28FF52;
+    font-size: 30px;
+    margin-left: calc((100% - 30px)/2);
+    margin-top: 140px;
+    width: 30px;
+
+}

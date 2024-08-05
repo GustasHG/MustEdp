@@ -1,11 +1,20 @@
 import { IoCloudUploadOutline } from "react-icons/io5";
-import { useState } from "react";
 import styles from "./File.module.css";
+import { useState } from "react";
 
-export default function File() {
+interface FileProps {
+    onChange?: (file: File | null) => void
+}
+
+export default function File(
+    {
+        onChange
+    }: FileProps
+) {
     const [isActive, setIsActive] = useState(false);
+    const [currentFile, setCurrentFile] = useState<string>("extensão .csv")
 
-    const handleDragOver = (e) => {
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsActive(true);
     };
@@ -14,16 +23,21 @@ export default function File() {
         setIsActive(false);
     };
 
-    const handleDrop = (e) => {
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsActive(false);
         const files = e.dataTransfer.files;
         handleFiles(files);
     };
 
-    const handleFiles = (files) => {
-        console.log('Files:', files);
-        // Process the files here
+    const handleFiles = async (files: FileList | null) => {
+        if (files) {
+            onChange && onChange(files[files.length - 1]);
+            setCurrentFile(files[files.length - 1].name)
+        }
+        else {
+            onChange && onChange(null);
+        }
     };
 
     const handleClick = () => {
@@ -47,7 +61,7 @@ export default function File() {
                 Envie sua base aqui
             </p>
             <p className={styles.subTitle}>
-                extensão .csv
+                {currentFile}
             </p>
         </div>
         <div className={styles.buttonContainer}>

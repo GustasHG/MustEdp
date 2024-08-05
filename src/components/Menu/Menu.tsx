@@ -1,17 +1,18 @@
 "use client"
+import { getConfiabilidadePath } from "../pages/confiabilidade/ConfiabilidadePath";
+import { getContratoPath } from "../pages/contrato/ContratoPath";
+import { getDemandaPath } from "../pages/demanda/DemandaPath";
+import { getTarifaPath } from "../pages/tarifa/TarifaPath";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { LiaFileContractSolid } from "react-icons/lia";
 import { useEffect, useRef, useState } from "react";
-import { FaChartBar } from "react-icons/fa";
 import { RiMapPin2Line } from "react-icons/ri";
+import { FaChartBar } from "react-icons/fa";
 import { SlEnergy } from "react-icons/sl";
 import { FaGear } from "react-icons/fa6";
 import styles from "./Menu.module.css";
-
-
-
 import Link from "next/link";
-import { getTarifaPath } from "../pages/tarifa/TarifaPath";
+
 
 export default function Menu() {
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -54,11 +55,11 @@ export default function Menu() {
                             <p className={styles.headerTitle}>Configurações</p>
                         </div>
                         <LiaFileContractSolid className={styles.linkIcon}/>
-                        <Link className={styles.link} href="/">Alterar Contratos</Link>
+                        <Link className={styles.link} href={getContratoPath("Todas", "Todos", "Todos", "Todos")}>Alterar Contratos</Link>
                         <FaChartBar className={styles.linkIcon}/>
-                        <Link className={styles.link} href="/">Alterar Conf</Link>
+                        <Link className={styles.link} href={getConfiabilidadePath("Todas", "Todos", "Todos", "Todos")}>Alterar Conf</Link>
                         <SlEnergy className={styles.linkIcon}/>
-                        <Link className={styles.link} href="/">Alterar Demanda</Link>
+                        <Link className={styles.link} href={getDemandaPath("Todas", "Todos", "Todos", "Todos")}>Alterar Demanda</Link>
                         <RiMoneyDollarCircleLine className={styles.linkIcon}/>
                         <Link className={styles.link} href={getTarifaPath("Todas", "Todos", "Todos", "Todos")}>Alterar Tarifa</Link>
                         <RiMapPin2Line className={styles.linkIcon}/>

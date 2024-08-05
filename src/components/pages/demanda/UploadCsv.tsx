@@ -1,4 +1,5 @@
 "use client"
+import { DemandaAdapter } from "@/api/DemandaAdapter/DemandaAdapter";
 import { ApiAdapter } from "@/api/ApiAdapter/ApiAdapter";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { PiTableFill } from "react-icons/pi";
@@ -6,15 +7,13 @@ import styles from "./UploadCsv.module.css";
 import File from "@/components/Input/File";
 import { RxUpdate } from "react-icons/rx";
 import { useState } from "react";
-import { TarifaAdapter } from "@/api/TarifaAdapter/TarifaAdapter";
-import { CreateTarifaDto } from "@/api/TarifaAdapter/dto/CreateTarifaDto";
 
 export default function UploadCsv() {
     const [error, setError] = useState<string>("");
     const [file, setFile] = useState<File | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const adapter = new ApiAdapter();
-    const tarifaAdapter = new TarifaAdapter(adapter);
+    const demandaAdapter = new DemandaAdapter(adapter);
 
     const changeEventHandler = (file: File | null) => {
         setFile(file);
@@ -36,7 +35,8 @@ export default function UploadCsv() {
                     "Ponto",
                     "Posto",
                     "Data",
-                    "Tarifa",
+                    "TipoDemanda",
+                    "Demanda",
                     "Empresa",
                 ];
                 let error = "";
@@ -53,8 +53,8 @@ export default function UploadCsv() {
                 })
                 if (!error) {
                     try {
-                        await tarifaAdapter.deleteAll();
-                        await tarifaAdapter.createMany({ payload: data });
+                        await demandaAdapter.deleteAll();
+                        await demandaAdapter.createMany({ payload: data });
                     }
                     catch(error: any) {
                         setError(error.message);
@@ -94,26 +94,27 @@ export default function UploadCsv() {
         <>
             <div className={styles.main}>
                 <section className={styles.section}>
-                    Para atualizar a base de tarifas, é necessário fazer o <strong>envio de um arquivo .csv</strong> com o seguinte template:
+                    Para atualizar a base de demanda, é necessário fazer o <strong>envio de um arquivo .csv</strong> com o seguinte template:
                 </section>
 
                 <section className={styles.section}>
                     <div className={styles.schema}>
                         <p className={styles.schemaLine}>
                             <PiTableFill className={styles.tableIcon}/>
-                            <span style={{ color: "#666", marginLeft: 2 }}>tarifa</span>
+                            <span style={{ color: "#666", marginLeft: 2 }}>demanda</span>
                         </p>
                         <p className={styles.schemaLine}><span>Ponto:</span> string </p>
                         <p className={styles.schemaLine}><span>Posto:</span> string ("Ponta", "Fora Ponta") </p>
                         <p className={styles.schemaLine}><span>Data:</span> date </p>
-                        <p className={styles.schemaLine}><span>Tarifa:</span> float </p>
+                        <p className={styles.schemaLine}><span>TipoDemanda:</span> string </p>
+                        <p className={styles.schemaLine}><span>Demanda:</span> float </p>
                         <p className={styles.schemaLine} style={{ marginBottom: "5px" }}><span>Empresa:</span> string ("SP", "ES") </p>
                     </div>
                 </section>
                 
                 <section className={styles.section}>
                     <strong>
-                        Selecione o arquivo para atualizar a base de tarifas:
+                        Selecione o arquivo para atualizar a base de demanda:
                     </strong>
                 </section>
 
