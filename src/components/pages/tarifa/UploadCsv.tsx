@@ -1,4 +1,6 @@
 "use client"
+import { CreateTarifaDto } from "@/api/TarifaAdapter/dto/CreateTarifaDto";
+import { TarifaAdapter } from "@/api/TarifaAdapter/TarifaAdapter";
 import { ApiAdapter } from "@/api/ApiAdapter/ApiAdapter";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { PiTableFill } from "react-icons/pi";
@@ -6,8 +8,6 @@ import styles from "./UploadCsv.module.css";
 import File from "@/components/Input/File";
 import { RxUpdate } from "react-icons/rx";
 import { useState } from "react";
-import { TarifaAdapter } from "@/api/TarifaAdapter/TarifaAdapter";
-import { CreateTarifaDto } from "@/api/TarifaAdapter/dto/CreateTarifaDto";
 
 export default function UploadCsv() {
     const [error, setError] = useState<string>("");
@@ -30,13 +30,16 @@ export default function UploadCsv() {
             setError("O arquivo deve ser um .csv.");
         }
         else {
-            const data = await parse(await file.text(), ",");
+            let data = await parse(await file.text(), ",");
+            data = data.filter((value) => value.Empresa);
+            console.log(data);
             if (data) {
                 const requiredColumns = [
                     "Ponto",
                     "Posto",
                     "Data",
-                    "Tarifa",
+                    "TarifaDrp",
+                    "TarifaDra",
                     "Empresa",
                 ];
                 let error = "";
@@ -71,18 +74,23 @@ export default function UploadCsv() {
         setIsLoading(false);
     }
 
-    const parse = async (content: string, separator: string): Promise<Record<string, string>[]> => {
+    const parse = async (content: string, separator: string): Promise<Record<string, string | null>[]> => {
         const lines = content.split("\n");
         if (lines) {
             const header = lines[0];
             const headerColumns = header.split(separator);
             const data = lines.slice(1);
-            const arrayData: Record<string, string>[] = [];
+            const arrayData: Record<string, string | null>[] = [];
             data.forEach((line: string) => {
                 const lineColumns = line.split(separator);
-                const rowObject: Record<string, string> = {};
+                const rowObject: Record<string, string | null> = {};
                 for (let columnIndex = 0; columnIndex < headerColumns.length; columnIndex++) {
-                    rowObject[headerColumns[columnIndex]] = lineColumns[columnIndex];
+
+                    let value: string | null = lineColumns[columnIndex];
+                    if (["null", null].includes(value)) {
+                        value = null;
+                    }
+                    rowObject[headerColumns[columnIndex]] = value;
                 }
                 arrayData.push(rowObject);
             });

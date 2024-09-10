@@ -43,7 +43,8 @@ export class ContractAdapter implements ContractAdapterInterface {
                     TipoContrato: contrato,
                     Ponto: ponto,
                     Posto: posto,
-                    Ano: ano
+                    Ano: ano,
+                    Empresa: region
                 })
             }
         );
@@ -60,7 +61,8 @@ export class ContractAdapter implements ContractAdapterInterface {
                     TipoDemanda: demanda,
                     Ponto: ponto,
                     Posto: posto,
-                    Ano: ano
+                    Ano: ano,
+                    Empresa: region
                 })
             }
         );
