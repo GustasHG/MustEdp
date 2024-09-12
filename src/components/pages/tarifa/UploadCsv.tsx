@@ -1,12 +1,15 @@
 "use client"
-import { CreateTarifaDto } from "@/api/TarifaAdapter/dto/CreateTarifaDto";
+import { ExcelTemplateAdapter } from "@/Csv/ExcelTemplateAdapter";
 import { TarifaAdapter } from "@/api/TarifaAdapter/TarifaAdapter";
 import { ApiAdapter } from "@/api/ApiAdapter/ApiAdapter";
 import { MdOutlineFileUpload } from "react-icons/md";
+import { DataValidator } from "@/Csv/DataValidator";
 import { PiTableFill } from "react-icons/pi";
 import styles from "./UploadCsv.module.css";
 import File from "@/components/Input/File";
 import { RxUpdate } from "react-icons/rx";
+import { CsvFactory } from "@/Csv/Csv";
+import { Parser } from "@/Csv/IParser";
 import { useState } from "react";
 
 export default function UploadCsv() {
@@ -30,41 +33,34 @@ export default function UploadCsv() {
             setError("O arquivo deve ser um .csv.");
         }
         else {
-            let data = await parse(await file.text(), ",");
-            data = data.filter((value) => value.Empresa);
-            console.log(data);
+            let text = await file.text();
+            const csv = new CsvFactory().instance(text, ";", ",");
+            let parser = new Parser();
+            let data: Record<string, string>[] = csv.parse(parser);
+            data = new ExcelTemplateAdapter().convert(
+                data,
+                ["Ponto", "Posto", "TipoTarifa", "Empresa"],
+                "Tarifa"
+            );
+            data = data.filter((value) => value.Empresa && value.Tarifa);
             if (data) {
-                const requiredColumns = [
+                const validator = new DataValidator();
+                const schema = [
                     "Ponto",
                     "Posto",
                     "Data",
-                    "TarifaDrp",
-                    "TarifaDra",
+                    "TipoTarifa",
+                    "Tarifa",
                     "Empresa",
                 ];
-                let error = "";
-                const receivedColumns = Object.keys(data[0]);
-                receivedColumns.forEach((element: string) => {
-                    if (!requiredColumns.includes(element)) {
-                        error = `${element} não deve estar no schema.`;
-                    }
-                });
-                requiredColumns.forEach((column: string) => {
-                    if (!receivedColumns.includes(column)) {
-                        error = `${column} deve estar no schema.`;
-                    }
-                })
-                if (!error) {
-                    try {
-                        await tarifaAdapter.deleteAll();
-                        await tarifaAdapter.createMany({ payload: data });
-                    }
-                    catch(error: any) {
-                        setError(error.message);
-                    }
+
+                try {
+                    validator.validate(data, schema);
+                    await tarifaAdapter.deleteAll();
+                    await tarifaAdapter.createMany({ payload: data });
                 }
-                else {
-                    setError(error);
+                catch (error: any) {
+                    setError(error.message);
                 }
             }
             else {
@@ -74,30 +70,6 @@ export default function UploadCsv() {
         setIsLoading(false);
     }
 
-    const parse = async (content: string, separator: string): Promise<Record<string, string | null>[]> => {
-        const lines = content.split("\n");
-        if (lines) {
-            const header = lines[0];
-            const headerColumns = header.split(separator);
-            const data = lines.slice(1);
-            const arrayData: Record<string, string | null>[] = [];
-            data.forEach((line: string) => {
-                const lineColumns = line.split(separator);
-                const rowObject: Record<string, string | null> = {};
-                for (let columnIndex = 0; columnIndex < headerColumns.length; columnIndex++) {
-
-                    let value: string | null = lineColumns[columnIndex];
-                    if (["null", null].includes(value)) {
-                        value = null;
-                    }
-                    rowObject[headerColumns[columnIndex]] = value;
-                }
-                arrayData.push(rowObject);
-            });
-            return arrayData;
-        }
-        return [];
-    }
     return (
         <>
             <div className={styles.main}>

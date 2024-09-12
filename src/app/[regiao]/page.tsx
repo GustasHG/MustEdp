@@ -72,7 +72,12 @@ export default async function Page(
                 if (value.TipoContrato === contrato) {
                     const arr = Object.keys(defaultObject) as (keyof PenalidadeBarChartData)[];
                     arr.forEach((key: keyof Contract) => {
-                        record[key] += (value[key] as number)/1000000;
+                        if (key === 'Contrato') {
+                            record[key] += (value[key] as number)/1000;    
+                        }
+                        else {
+                            record[key] += (value[key] as number)/1000000;
+                        }
                     });
                 }
             });

@@ -9,9 +9,11 @@ const posto = [
 ];
 
 const cenario = [
-    "Otimista",
+    "Base",
     "Conservador",
-    "Extremo"
+    "Conservador_2",
+    "Extremo",
+    "Arquivo_MUST",
 ];
 
 const periodo = [
