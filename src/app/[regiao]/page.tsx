@@ -55,7 +55,9 @@ export default async function Page(
             };
         }
 
+
         contractTypes.forEach((contrato: string) => {
+            let total: number = 0;
             let id = 0;
             if (contrato === 'Contrato Ótimo') {
                 id = 1;
@@ -76,12 +78,13 @@ export default async function Page(
                             record[key] += (value[key] as number)/1000;    
                         }
                         else {
-                            record[key] += (value[key] as number)/1000000;
+                            record[key] += (value[key] as number)/1000;
+                            total += (value[key] as number)/1000;
                         }
                     });
                 }
             });
-            result.push(record);
+            result.push({ ...record, Total: total});
         });
         result.sort((a, b) => {
             if (a.Id > b.Id) return 1;

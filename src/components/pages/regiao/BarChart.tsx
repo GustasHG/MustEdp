@@ -12,6 +12,7 @@ export interface PenalidadeBarChartData {
   Pis?: number,
   Add?: number,
   Eust?: number,
+  Total?: number
   Id: number
 }
 
@@ -47,11 +48,28 @@ const RenderCustomizedLabel = (
   );
 };
 
+
+const RenderSumLabel = ({ x, y, width, value }: any) => {
+  return (
+    <text
+      x={x + width / 2}
+      y={y - 10} // Position above the bars
+      fill="black"
+      textAnchor="middle"
+      dominantBaseline="middle"
+      style={{ fontWeight: 'bold' }}
+    >
+      {parseFloat(value).toFixed(2)}
+    </text>
+  );
+};
+
 export default function PenalidadeBarChart (
   {
     data
   }: PenalidadeBarChartProps
 ) {
+  console.log(data);
   return (
     <ResponsiveContainer width="100%" height="100%" style={{ float: "left" }}>
       <BarChart
@@ -82,7 +100,10 @@ export default function PenalidadeBarChart (
         <Bar dataKey="Pis" stackId="a" fill="#28FF52">
           <LabelList dataKey="Pis" fill='#000000' content={RenderCustomizedLabel} />
         </Bar>
-        </BarChart>
+        <Bar dataKey="Pis" stackId="a" fill="transparent">
+          <LabelList dataKey="Total" content={RenderSumLabel} />
+        </Bar>
+      </BarChart>
     </ResponsiveContainer>
   );
 }

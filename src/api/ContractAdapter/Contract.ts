@@ -13,4 +13,5 @@ export interface Contract {
     Add: number;
     Pis: number;
     Eust: number;
+    Total: number
 }
