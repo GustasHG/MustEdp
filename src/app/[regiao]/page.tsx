@@ -1,14 +1,15 @@
+import { DemandaChartAdapter, IDemandaChartAdapter } from "@/api/SimuladorAdapter/DemandaChartAdapter/DemandaChartAdapter";
+import { CustosAdapter, ICustosAdapter } from "@/api/SimuladorAdapter/CustosAdapter/CustosAdapter";
 import PenalidadeChartSection from "@/components/pages/regiao/PenalidadeChartSection";
+import PenalidadeTableSection from "@/components/pages/regiao/PenalidadeTableSection";
 import DemandaChartSection from "@/components/pages/regiao/DemandaChartSection";
+import { CustosChart } from "@/api/SimuladorAdapter/CustosAdapter/CustosChart";
 import { PenalidadeBarChartData } from "@/components/pages/regiao/BarChart";
-import { ContractAdapter } from "@/api/ContractAdapter/ContractAdapter";
-import { Contract } from "@/api/ContractAdapter/Contract";
 import { ApiAdapter } from "@/api/ApiAdapter/ApiAdapter";
 import Filter from "@/components/pages/regiao/Filter";
 import Card from "@/components/pages/regiao/Card";
 import { Region } from "@/types/Region";
 import styles from "./page.module.css";
-import PenalidadeTableSection from "@/components/pages/regiao/PenalidadeTableSection";
 
 export default async function Page(
     context: {
@@ -19,10 +20,26 @@ export default async function Page(
     const { regiao } = context.params;
     const { cenario, ponto, posto, ano, penalidade, contrato } = context.searchParams;
     const adapter = new ApiAdapter();
-    const contractAdapter = new ContractAdapter(adapter);
+    const custosAdapter: ICustosAdapter = new CustosAdapter(adapter);
+    const demandaAdapter: IDemandaChartAdapter = new DemandaChartAdapter(adapter);
     
-    let data = await contractAdapter.get(cenario, ponto, posto, ano, regiao);
-    const demandaData = await contractAdapter.getDemandaChartData(cenario, contrato, ponto, posto, ano, regiao);
+    let data = await custosAdapter.get({
+        Ponto: ponto,
+        Posto: posto,
+        Ano: ano,
+        Empresa: regiao.toUpperCase() as Region,
+        // TipoContrato: contrato,
+        TipoDemanda: cenario
+    });
+    const demandaData = await demandaAdapter.get({
+        Ponto: ponto,
+        Posto: posto,
+        Ano: ano,
+        Empresa: regiao.toUpperCase() as Region,
+        TipoContrato: contrato,
+        TipoDemanda: cenario
+    });
+
     const getPizzaChartData = () => {
         const fields = [
             { name: "Piu", value: 5, fill: "#E32C2C" },
@@ -36,7 +53,7 @@ export default async function Page(
 
     const getBarChartData = () => {
         const contractTypes: string[] = [];
-        data.forEach((value: Contract) => {
+        data.forEach((value: CustosChart) => {
             if (!contractTypes.includes(value.TipoContrato)) {
                 contractTypes.push(value.TipoContrato)
             }
@@ -44,7 +61,7 @@ export default async function Page(
 
         const result: PenalidadeBarChartData[] = [];
         let tempPenalidade = penalidade || "Todas";
-        let defaultObject: Partial<Contract> = {  };
+        let defaultObject: Partial<CustosChart> = {  };
 
         if (penalidade === "Todas") {
             defaultObject = { Piu: 0, Pis: 0, Add: 0, Eust: 0, Contrato: 0 };
@@ -70,10 +87,10 @@ export default async function Page(
                 ...defaultObject,
                 Id: id
             };
-            data.forEach((value: Contract) => {
+            data.forEach((value: CustosChart) => {
                 if (value.TipoContrato === contrato) {
                     const arr = Object.keys(defaultObject) as (keyof PenalidadeBarChartData)[];
-                    arr.forEach((key: keyof Contract) => {
+                    arr.forEach((key: keyof CustosChart) => {
                         if (key === 'Contrato') {
                             record[key] += (value[key] as number)/1000;    
                         }
@@ -95,7 +112,7 @@ export default async function Page(
 
     const getDistinctPonto = () => {
         let pontos: string[] = [];
-        data.forEach((value: Contract) => {
+        data.forEach((value: CustosChart) => {
             if (!pontos.includes(value.Ponto)) {
                 pontos.push(value.Ponto);
             }
@@ -109,7 +126,7 @@ export default async function Page(
 
     const getDistinctDate = () => {
         const dateList = ["Todos"];
-        data.forEach((value: Contract) => {
+        data.forEach((value: CustosChart) => {
             if (!dateList.includes(value.Data.slice(0, 4))) {
                 dateList.push(value.Data.slice(0, 4));
             }
@@ -119,7 +136,7 @@ export default async function Page(
 
     const getDistinctContract = () => {
         const contractList: string[] = [];
-        data.forEach((value: Contract) => {
+        data.forEach((value: CustosChart) => {
             if (!contractList.includes(value.TipoContrato)) {
                 contractList.push(value.TipoContrato);
             }

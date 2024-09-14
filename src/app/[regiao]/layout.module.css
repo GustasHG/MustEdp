@@ -1,0 +1,23 @@
+.HeaderContainer {
+    background-color: #e5e5e5;
+    float: left;
+    height: 50px;
+    width: 100%;
+}
+
+.HeaderContent {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 75%;
+}
+
+.Link {
+    color: #394452;
+    font-weight: bold;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.Link:hover {
+    color: black;
+}
