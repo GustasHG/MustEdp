@@ -94,8 +94,8 @@ export default async function Page(
                             record[key] += (value[key] as number);    
                         }
                         else {
-                            record[key] += (value[key] as number)/1000;
-                            total += (value[key] as number)/1000;
+                            record[key] += (value[key] as number);
+                            total += (value[key] as number);
                         }
                     });
                 }
