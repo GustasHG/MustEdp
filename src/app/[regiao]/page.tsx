@@ -28,9 +28,8 @@ export default async function Page(
         Posto: posto,
         Ano: ano,
         Empresa: regiao.toUpperCase() as Region,
-        // TipoContrato: contrato,
         TipoDemanda: cenario
-    });
+    }, penalidade);
     const demandaData = await demandaAdapter.get({
         Ponto: ponto,
         Posto: posto,
@@ -92,7 +91,7 @@ export default async function Page(
                     const arr = Object.keys(defaultObject) as (keyof PenalidadeBarChartData)[];
                     arr.forEach((key: keyof CustosChart) => {
                         if (key === 'Contrato') {
-                            record[key] += (value[key] as number)/1000;    
+                            record[key] += (value[key] as number);    
                         }
                         else {
                             record[key] += (value[key] as number)/1000;
@@ -126,6 +125,7 @@ export default async function Page(
 
     const getDistinctDate = () => {
         const dateList = ["Todos"];
+        console.log(data);
         data.forEach((value: CustosChart) => {
             if (!dateList.includes(value.Data.slice(0, 4))) {
                 dateList.push(value.Data.slice(0, 4));

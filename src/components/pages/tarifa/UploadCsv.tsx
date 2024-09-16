@@ -37,6 +37,7 @@ export default function UploadCsv() {
             const csv = new CsvFactory().instance(text, ";", ",");
             let parser = new Parser();
             let data: Record<string, string>[] = csv.parse(parser);
+            console.log(data);
             data = new ExcelTemplateAdapter().convert(
                 data,
                 ["Ponto", "Posto", "TipoTarifa", "Empresa"],
