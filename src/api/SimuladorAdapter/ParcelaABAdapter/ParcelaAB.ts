@@ -1,8 +1,8 @@
 import { Region } from "@/types/Region";
 
-export interface SummaryData {
+export interface ParcelaAB {
     Empresa: Region;
-    Ano: number;
+    Data: Date;
     TipoDemanda: string;
     TipoContrato: string;
     Contrato: number;

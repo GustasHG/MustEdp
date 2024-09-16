@@ -1,0 +1,23 @@
+.chartBlankContainer {
+    background-color: white;
+    float: left;
+    height: 350px;
+    width: 100%;
+}
+
+.chartContainer {
+    height: 300px;
+    float: left;
+    width: 100%;
+}
+
+.chartTitleContainer {
+    color: #646D78;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 100%;
+}

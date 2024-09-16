@@ -22,7 +22,7 @@ export default function Layout(
 
                     <Link
                         className={style.Link}
-                        href={`/${params.regiao.toLowerCase()}/resumo`}
+                        href={`/${params.regiao.toLowerCase()}/resumo?demanda=Escolha um Cenario&contrato=Escolha um Cenario`}
                         // style={{ textDecoration: !(url.includes("/resumo")) ? "none" : "underline" }}
                     >
                         Resumo

@@ -1,12 +1,12 @@
 "use client"
+import { DemandaChart as DemandaChartType } from "@/api/SimuladorAdapter/DemandaChartAdapter/DemandaChart";
 import { useParams, useSearchParams } from "next/navigation";
-import { Contract } from "@/api/ContractAdapter/Contract";
 import styles from "./DemandaChartSection.module.css";
 import Dropdown from "@/components/Input/Dropdown";
 import DemandaChart from "./DemandaChart";
 
 interface DemandaChartSectionProps {
-    data: Contract[]
+    data: DemandaChartType[]
     options: string[]
 }
 

@@ -25,25 +25,25 @@ const periodo = [
 ]
 
 interface FilterProps {
-    // dateOptions: string[]
+    contratos: string[]
     // pontos: string[]
 }
 
 export default function Filter(
     {
-        // dateOptions,
+        contratos,
         // pontos
     }: FilterProps
 ) {
     const params = useSearchParams();
     const { regiao } = useParams();
     const changeDemandaEventHandler = (value: string) => {
-        window.location.replace(`/${regiao}?demanda=${value}&contrato=${params.get("contrato")}`);
+        window.location.replace(`/${regiao}/resumo?demanda=${value}&contrato=${params.get("contrato")}`);
     }
 
 
     const changeContratoEventHandler = (value: string) => {
-        window.location.replace(`/${regiao}?demanda=${params.get("cenario")}&contrato=${value}`);
+        window.location.replace(`/${regiao}/resumo?demanda=${params.get("demanda")}&contrato=${value}`);
     }
     
     return (
@@ -58,7 +58,7 @@ export default function Filter(
                 title="Contrato"
                 defaultValue={params.get("contrato")}
                 onChange={changeContratoEventHandler}
-                options={posto}
+                options={contratos}
                 style={{ marginLeft: "10px" }}
             />
         </>
