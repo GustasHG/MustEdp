@@ -1,7 +1,7 @@
 .tableContainer {
     float: left;
-    margin-left: calc((100% - (120px)*7)/2);
-    width: calc(120px*7);
+    margin-left: calc((100% - (130px)*6)/2);
+    width: calc(130px*6);
 }
 
 .headerContainer {
@@ -26,5 +26,5 @@
     float: left;
     height: 40px;
     text-align: center;
-    width: 105px;
+    width: 130px;
 }

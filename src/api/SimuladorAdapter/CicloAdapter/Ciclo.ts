@@ -1,18 +1,10 @@
 import { Region } from "@/types/Region";
 
-export interface SummaryData {
+export interface Ciclo {
     Empresa: Region;
-    Ano: number;
+    Ciclo: number;
     TipoDemanda: string;
     TipoContrato: string;
-    Contrato: number;
-    Demanda?: number;
-    Piu?: number;
-    Add?: number;
-    Eust: number;
-    Pis?: number;
-    Dra?: number;
-    Drp?: number;
     ParcelaA: number;
     ParcelaB: number;
     CustoTotal: number;

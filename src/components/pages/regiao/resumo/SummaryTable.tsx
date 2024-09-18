@@ -41,14 +41,14 @@ export default function SummaryTable(
                     Contrato
                 </Cell>
                 <Cell color="#fff" >
-                    Ano
+                    Ciclo
                 </Cell>
-                <Cell color="#fff" >
+                {/* <Cell color="#fff" >
                     Total Contratado
-                </Cell>
-                <Cell color="#fff" >
+                </Cell> */}
+                {/* <Cell color="#fff" >
                     Eust
-                </Cell>
+                </Cell> */}
                 <Cell color="#fff" >
                     Parcela A
                 </Cell>
@@ -72,12 +72,12 @@ export default function SummaryTable(
                             <Cell>
                                 {value.Ano}
                             </Cell>
-                            <Cell>
+                            {/* <Cell>
                                 {(value.Contrato || 0).toFixed(2)}
                             </Cell>
                             <Cell>
                                 {(value.Eust || 0).toFixed(2)}
-                            </Cell>
+                            </Cell> */}
                             <Cell>
                                 {(value.ParcelaA || 0).toFixed(2)}
                             </Cell>
