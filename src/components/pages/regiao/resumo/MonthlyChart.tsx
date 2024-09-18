@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  Brush,
 } from 'recharts';
 
 
@@ -39,13 +40,14 @@ export default function MonthlyChart(
                 <XAxis dataKey="Data" scale="band" />
                 <YAxis />
                 <Tooltip />
-                <Legend />
+                <Legend style={{ marginTop: "10px" }} />
                 <Bar dataKey="ParcelaA" stackId="a" fill="#BECACC" />
                 <Bar dataKey="ParcelaB" stackId="a" fill="#7C9599" />
                 <Bar dataKey="CustoTotal" stackId="a" fill="#EDD5D3" />
-                <Line type="monotone" dataKey="Contrato" stroke="#6D32FF" />
-                <Line type="monotone" dataKey="Demanda" stroke="#28FF52" />
-                <Line type="monotone" dataKey="Total" stroke="#0CD3F8" />
+                <Line type="monotone" dot={false} dataKey="Contrato" stroke="#6D32FF" strokeWidth={2} />
+                <Line type="monotone" dot={false} dataKey="Demanda" stroke="#28FF52" strokeWidth={2} />
+                <Line type="monotone" dot={false} dataKey="Total" stroke="#0CD3F8" strokeWidth={2} />
+                <Brush  dataKey="Data" height={20} stroke="#212E3E" style={{ marginTop: "15px", marginBottom: "20px", paddingTop: "10px" }}  />
             </ComposedChart>
         </ResponsiveContainer>
     );

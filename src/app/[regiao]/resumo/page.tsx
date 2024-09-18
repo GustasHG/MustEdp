@@ -15,6 +15,7 @@ const contratos = [
     'Extremo',
     'Orçado',
     'R07',
+    'R08',
 ];
 
 export default async function Page(
