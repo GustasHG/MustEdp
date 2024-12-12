@@ -1,5 +1,4 @@
-import { getTarifaPath } from "@/components/pages/tarifa/TarifaPath";
-import Menu from "@/components/Menu/Menu";
+import Menu from "@/components/menu/menu";
 import { Dosis } from "next/font/google";
 import styles from "./layout.module.css";
 import type { Metadata } from "next";
@@ -34,11 +33,6 @@ export default function RootLayout({
           <div className={styles.info}>
             <Menu/>
           </div> 
-          <Link href={getTarifaPath("Todas", "Todos", "Todos", "Todos")}>
-            <p className={styles.info}>
-              Tarifa
-            </p>
-          </Link>         
           <Link href="/">
             <p className={styles.info}>
               Home
