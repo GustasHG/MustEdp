@@ -1,6 +1,7 @@
 import styles from "./contrato-table-row.module.css";
 import { DemandaName } from "./demanda-name";
 import { ResultRow } from "./result-row";
+import { DataValidator } from '../../../Csv/DataValidator';
 
 interface ContratoTableRowProps {
     style?: React.CSSProperties
@@ -13,7 +14,7 @@ export const ContratoTableRow: React.FC<ContratoTableRowProps> = ({
         <div className={styles["container"]} style={style}>
             <div className={styles["field-container"]} style={{ marginLeft: "4%" }}>
                 <p className={styles["contrato-otimo-field"]} style={{ color: "#3A6C72" }}>
-                    <strong>Base</strong>
+                    <strong className={styles["contrato-otimo-field"]}>Base</strong>
                 </p>
             </div>
 
