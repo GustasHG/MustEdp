@@ -1,0 +1,80 @@
+.main-container {
+    float: left;
+    width: 100%;
+}
+
+.header-container {
+    background-color: #212E3E;
+    float: left;
+    height: 45px;
+    width: 100%;
+}
+
+.main-title {
+    color: #fff;
+    float: left;
+    font-size: 27px;
+    margin-left: 15%;
+    margin-top: 5px;
+}
+
+.sub-title {
+    color: #fff;
+    float: left;
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 10PX;
+    margin-top: 12px;
+}
+
+.contrato-orcado-container {
+    border-bottom: solid 1px #E4E4E4;
+    border-top: solid 1px #E4E4E4;
+    float: left;
+    height: 40px;
+    margin-left: 5%;
+    margin-top: -1px;
+    text-align: center;
+    width: 90%;
+}
+
+.contrato-orcado-title {
+    color: #808080;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    margin-left: 8%;
+    text-align: center;
+    width: 10%;
+}
+
+.table-container {
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 50px;
+    width: 90%;
+}
+
+.table-header-container {
+    border-bottom: solid 1px #A7A7A7;
+    float: left;
+    width: 100%;
+}
+
+.table-header-cell {
+    columns: #2E2E2E;
+    font-size: 12px;
+    font-weight: bold;
+    float: left;
+    text-align: center;
+    width: 17%;
+}
+
+.table-body {
+    float: left;
+    width: 100%;
+}

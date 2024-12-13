@@ -1,0 +1,40 @@
+.container {
+    background-color: #EAEAEA;
+    float: left;
+    width: 100%;
+}
+
+.field-container {
+    align-items: center;
+    color: #3A6C72;
+    display: flex;
+    flex-direction: column; /* Adicionado */
+    justify-content: center;
+    font-weight: bold;
+    height: 110px;
+    float: left;
+    text-align: center;
+    width: 17%;
+}
+
+.contrato-otimo-field {
+    color: #000;
+    font-weight: normal;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.result-container {
+    align-items: center;
+    color: #3A6C72;
+    display: flex;
+    flex-direction: column; /* Adicionado */
+    justify-content: center;
+    font-weight: bold;
+    height: 110px;
+    float: left;
+    text-align: center;
+    width: 41%;
+}

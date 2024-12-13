@@ -1,0 +1,27 @@
+.container {
+    margin-top: 5px;
+    height: 40px;
+    width: 120px;
+}
+
+.bar {
+    background-color: #303F7A;
+    float: left;
+    height: 20px;
+    width: 2px;
+}
+
+.title {
+    float: left;
+    font-size: 12px;
+    margin-bottom: 0;
+    margin-left: 8px;
+    margin-top: 2px;
+    text-align: left;
+    width: calc(100% - 10px);
+}
+
+.value {
+    font-weight: bold;
+    margin-top: -2px;
+}
